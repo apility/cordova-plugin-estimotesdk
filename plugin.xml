@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://cordova.apache.org/ns/plugins/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	id="cordova-plugin-estimotesdk"
+	version="1.0.0">
+
+	<name>CordovaEstimoteSDK</name>
+	<description>Cordova plugin wrapper for Estimote SDK</description>
+	<license>MIT</license>
+	<keywords>Estimote, iBeacon</keywords>
+
+	<js-module src="src/js/CordovaEstimoteSDK.js" name="CordovaEstimoteSDK">
+		<clobbers target="EstimoteSDK" />
+	</js-module>
+
+	<platform name="android">
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="CordovaEstimoteSDK" >
+				<param name="android-package" value="no.apility.CordovaEstimoteSDK"/>
+			</feature>
+		</config-file>
+		<source-file src="plugin/src/android/CordovaEstimoteSDK.java" target-dir="src/no/apility" />
+        <framework src="com.estimote:sdk:1.0.3:release@aar" />
+	</platform>
+
+	<platform name="ios">
+		<framework src="src/ios/iOS-SDK/EstimoteSDK/EstimoteSDK.framework" custom="true" />
+		<source-file src="plugin/src/ios/CordovaEstimoteSDK.swift" />
+		<config-file target="config.xml" parent="/*">
+			<feature name="CordovaEstimoteSDK">
+				<param name="ios-package" value="CordovaEstimoteSDK" />
+			</feature>
+		</config-file>
+	</platform>
+</plugin>

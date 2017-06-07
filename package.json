@@ -1,0 +1,31 @@
+{
+  "name": "cordova-plugin-estimotesdk",
+  "version": "1.0.0",
+  "description": "Cordova plugin wrapper for Estimote SDK",
+  "cordova": {
+    "id": "cordova-plugin-estimotesdk",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apility/cordova-plugin-estimotesdk.git"
+  },
+  "keywords": [
+    "Cordova",
+    "iBeacon",
+    "Beacon",
+    "Estimote",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "Thomas Alrek <thomas@apility.no>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/apility/cordova-plugin-estimotesdk/issues"
+  },
+  "homepage": "https://github.com/apility/cordova-plugin-estimotesdk#readme"
+}
