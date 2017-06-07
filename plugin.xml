@@ -19,13 +19,13 @@
 				<param name="android-package" value="no.apility.CordovaEstimoteSDK"/>
 			</feature>
 		</config-file>
-		<source-file src="plugin/src/android/CordovaEstimoteSDK.java" target-dir="src/no/apility" />
+		<source-file src="src/android/CordovaEstimoteSDK.java" target-dir="src/no/apility" />
         <framework src="com.estimote:sdk:1.0.3:release@aar" />
 	</platform>
 
 	<platform name="ios">
 		<framework src="src/ios/iOS-SDK/EstimoteSDK/EstimoteSDK.framework" custom="true" />
-		<source-file src="plugin/src/ios/CordovaEstimoteSDK.swift" />
+		<source-file src="src/ios/CordovaEstimoteSDK.swift" />
 		<config-file target="config.xml" parent="/*">
 			<feature name="CordovaEstimoteSDK">
 				<param name="ios-package" value="CordovaEstimoteSDK" />
