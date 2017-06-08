@@ -2,6 +2,9 @@
   "name": "cordova-plugin-estimotesdk",
   "version": "0.0.1",
   "description": "Cordova plugin wrapper for Estimote SDK",
+  "scripts": {
+    "postinstall": "scripts/postinstall.sh"
+  },
   "cordova": {
     "id": "cordova-plugin-estimotesdk",
     "platforms": [
