@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-estimotesdk",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Cordova plugin wrapper for Estimote SDK",
   "cordova": {
     "id": "cordova-plugin-estimotesdk",

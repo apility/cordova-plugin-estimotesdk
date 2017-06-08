@@ -2,7 +2,7 @@
 <plugin xmlns="http://cordova.apache.org/ns/plugins/1.0"
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	id="cordova-plugin-estimotesdk"
-	version="1.0.0">
+	version="0.0.1">
 
 	<name>CordovaEstimoteSDK</name>
 	<description>Cordova plugin wrapper for Estimote SDK</description>
