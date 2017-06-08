@@ -1,0 +1,1 @@
+# EstimoteSDK wrapper for Cordova
