@@ -1,6 +1,6 @@
 [submodule "src/android/Android-SDK"]
-	path = src/android/Android-SDK
+	path = libs/Android-SDK
 	url = https://github.com/Estimote/Android-SDK.git
 [submodule "src/ios/iOS-SDK"]
-	path = src/ios/iOS-SDK
+	path = libs/iOS-SDK
 	url = https://github.com/Estimote/iOS-SDK.git
