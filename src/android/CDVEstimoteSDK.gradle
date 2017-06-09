@@ -1,18 +1,17 @@
-repositories{    
-  jcenter()
+repositories{
   flatDir {
       dirs 'libs'
    }
 }
 
 dependencies {
-   compile(name:'estimote-sdk', ext:'aar')
+   compile 'com.estimote:sdk:1.0.3:release@aar'
 }
 
 android {
   defaultConfig {
       minSdkVersion 16
-      targetSdkVersion 22
+      targetSdkVersion 25
   }
   packagingOptions {
     exclude 'META-INF/NOTICE'
