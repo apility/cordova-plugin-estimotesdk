@@ -1,10 +1,10 @@
-package no.apility;
+package no.apility.cordova;
 
 import android.util.Log;
 import android.app.Application;
 import android.content.Context;
 
-import com.estimote.sdk.SystemRequirementsChecker;
+import com.estimote.coresdk.common.requirements.SystemRequirementsChecker;
 
 import org.apache.cordova.*;
 
@@ -21,15 +21,29 @@ public class CDVEstimoteSDK extends CordovaPlugin
 	 * Plugin initializer.
 	 */
 	@Override
-    public void pluginInitialize() {
-        super.pluginInitialize();
-        Log.i(tag, "pluginInitialize");
+    public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+        super.initialize(cordova, webView);
+        Log.i(tag, "initialize");
     }
 
-	public void requestPermissions(CallbackContext callbackContext) {
-		Log.i(tag, "requestPermissions");
-		SystemRequirementsChecker.checkWithDefaultDialogs(this);
-		callbackContext.success(1);
+	public boolean requestAlwaysAuthorization(final CallbackContext callbackContext) {
+		Log.i(tag, "requestAlwaysAuthorization");
+		if (SystemRequirementsChecker.checkWithDefaultDialogs(this.cordova.getActivity())) {
+			callbackContext.success(1);
+			return true;
+		}
+		callbackContext.error(0);
+		return false;
+	}
+
+	public boolean requestWhenInUseAuthorization(final CallbackContext callbackContext) {
+		Log.i(tag, "requestWhenInUseAuthorization");
+		if (requestAlwaysAuthorization(callbackContext)) {
+			callbackContext.success(1);
+			return true;
+		}
+		callbackContext.error(0);
+		return false;
 	}
 
 	/**
@@ -55,16 +69,19 @@ public class CDVEstimoteSDK extends CordovaPlugin
 	 * Entry point for JavaScript calls.
 	 */
 	@Override
-	public boolean execute(String action, CordovaArgs args, final CallbackContext callbackContext) throws JSONException {
+	public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
         Log.i(tag, "execute " + action);
 
 		if (action == null) {
 			return false;
 		}
 
-		if ("requestAlwaysAuthorization".equals(action) || "requestWhenInUseAuthorization".equals(action)) {
-			requestPermissions(callbackContext);
-			return true;
+		if ("requestAlwaysAuthorization".equals(action)) {
+			return requestAlwaysAuthorization(callbackContext);
+		}
+
+		if ("requestWhenInUseAuthorization".equals(action)) {
+			return requestWhenInUseAuthorization(callbackContext);
 		}
 
 		return false;
