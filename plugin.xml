@@ -10,6 +10,7 @@
 	<keywords>Estimote, iBeacon</keywords>
 
 	<dependency id="cordova-plugin-add-swift-support" version="1.6.2"/>
+	<dependency id="cordova-plugin-cocoapod-support"/>
 
 	<preference name="ESTIMOTE_APP_ID" default="-" />
 	<preference name="ESTIMOTE_APP_TOKEN" default="-" />
@@ -54,7 +55,7 @@
         <config-file target="*-Info.plist" parent="NSLocationWhenInUseUsageDescription">
             <string>$LOCATION_WHEN_IN_USE_DESCRIPTION</string>
         </config-file>
-		<framework src="src/ios/iOS-SDK/EstimoteSDK/EstimoteSDK.framework" custom="true" />
+		<pod name="EstimoteSDK" version="4.16.0" />
 	</platform>
 
 </plugin>
