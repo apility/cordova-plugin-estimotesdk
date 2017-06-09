@@ -9,6 +9,13 @@
 	<license>MIT</license>
 	<keywords>Estimote, iBeacon</keywords>
 
+	<dependency id="cordova-plugin-add-swift-support" version="1.6.2"/>
+
+	<preference name="ESTIMOTE_APP_ID" default="-" />
+	<preference name="ESTIMOTE_APP_TOKEN" default="-" />
+	<preference name="LOCATION_WHEN_IN_USE_DESCRIPTION" default="This app would like to scan for beacons while it is in use." />
+	<preference name="LOCATION_BACKGROUND_DESCRIPTION" default="This app would like to scan for beacons when in the background." />
+
 	<js-module src="src/js/CDVEstimoteSDK.js" name="CDVEstimoteSDK">
 		<clobbers target="cordova.plugins.EstimoteSDK" />
 	</js-module>
@@ -16,38 +23,38 @@
 	<platform name="android">
 		<config-file target="res/xml/config.xml" parent="/*">
 			<feature name="CDVEstimoteSDK" >
-				<param name="android-package" value="no.apility.CDVEstimoteSDK"/>
+				<param name="android-package" value="no.apility.cordova.CDVEstimoteSDK" />
 			</feature>
 		</config-file>
+		<source-file src="src/android/CDVEstimoteSDK.java" target-dir="src/no/apility/cordova/"/>
 		<config-file target="AndroidManifest.xml" parent="/manifest">
 			<uses-permission android:name="android.permission.BLUETOOTH" />
 			<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 		</config-file>
 		<config-file target="AndroidManifest.xml" parent="/manifest/application">
-			<service android:name="com.estimote.sdk.service.BeaconService" android:exported="false"/>
+			<service android:name="com.estimote.sdk.service.BeaconService" android:exported="false" />
 		</config-file>
 		<framework src="src/android/CDVEstimoteSDK.gradle" custom="true" type="gradleReference" />
-		<source-file src="libs/Android-SDK/EstimoteSDK/estimote-sdk.aar" target-dir="libs" />
 	</platform>
 
 	<platform name="ios">
-		<framework src="libs/iOS-SDK/EstimoteSDK/EstimoteSDK.framework" custom="true" />
-		<source-file src="src/ios/CDVEstimoteSDK.swift" />
 		<header-file src="src/ios/CDVEstimoteSDK-Bridging-Header.h"/>
-		<config-file target="config.xml" parent="/*">
-			<feature name="CDVEstimoteSDK">
-				<param name="ios-package" value="CDVEstimoteSDK" />
-			</feature>
+		<source-file src="src/ios/CDVEstimoteSDK.swift" />
+		<config-file target="*-Info.plist" parent="CDVEstimoteSDK">
+			<dict>
+				<key>AppID</key>
+				<string>$ESTIMOTE_APP_ID</string>
+				<key>AppToken</key>
+				<string>$ESTIMOTE_APP_TOKEN</string>
+			</dict>
 		</config-file>
-		<preference name="LOCATION_BACKGROUND_DESCRIPTION" default="This app would like to scan for beacons when in the background." />
         <config-file target="*-Info.plist" parent="NSLocationAlwaysUsageDescription">
             <string>$LOCATION_BACKGROUND_DESCRIPTION</string>
         </config-file>
-		<preference name="LOCATION_WHEN_IN_USE_DESCRIPTION" default="This app would like to scan for beacons while it is in use." />
         <config-file target="*-Info.plist" parent="NSLocationWhenInUseUsageDescription">
             <string>$LOCATION_WHEN_IN_USE_DESCRIPTION</string>
         </config-file>
+		<framework src="EstimoteSDK" type="podspec" spec="~> 4.16.0" />
 	</platform>
 
-	<dependency id="cordova-plugin-add-swift-support" version="1.6.2"/>
 </plugin>
