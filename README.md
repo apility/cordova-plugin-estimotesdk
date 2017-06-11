@@ -2,6 +2,12 @@
 
 Adds a thin wrapper around Estimote's native iBeacon and Nearables SDK. This plugin supports iOS 8 or later, and Android 4.4 or later.
 
+This is a new project, and is not related to the phonegap-estimotebeacons. Because that project is basically abandoned, and have done some bad decisions in the past (like committing full static libraries), this projects is written for scratch.
+
+It is a work in progress, and should not be used in production yet. It is missing a lot of functionality, and so we recommend you to use cordova-plugin-ibeacon until this projects gets more mature.
+
+If you would like to contribute, please see our [Contribution guidelines](CONTRIBUTING.md).
+
 ## Prerequisites
 
 Requires CocoaPods for iOS support. This is a requirement, because we don't want to include the entire EstimoteSDK framework in the plugin.
