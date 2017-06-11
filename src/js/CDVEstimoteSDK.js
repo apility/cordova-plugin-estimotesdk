@@ -2,25 +2,13 @@ const exec = cordova.require('cordova/exec')
 
 const requestAlwaysAuthorization = () => {
   return new Promise((resolve, reject) => {
-    exec(result => {
-      console.log('Success: ' + result)
-      resolve(result)
-    }, error => {
-      console.log('Success: ' + error)
-      reject(error)
-    }, 'CDVEstimoteSDK', 'requestAlwaysAuthorization')
+    exec(resolve, reject, 'CDVEstimoteSDK', 'requestAlwaysAuthorization')
   })
 }
 
 const requestWhenInUseAuthorization = () => {
   return new Promise((resolve, reject) => {
-    exec(result => {
-      console.log('Success: ' + result)
-      resolve(result)
-    }, error => {
-      console.log('Success: ' + error)
-      reject(error)
-    }, 'CDVEstimoteSDK', 'requestWhenInUseAuthorization')
+    exec(resolve, reject, 'CDVEstimoteSDK', 'requestWhenInUseAuthorization')
   })
 }
 
