@@ -9,9 +9,6 @@
 	<license>MIT</license>
 	<keywords>Estimote, iBeacon</keywords>
 
-	<dependency id="cordova-plugin-add-swift-support" version="1.6.2"/>
-	<dependency id="cordova-plugin-cocoapod-support"/>
-
 	<preference name="ESTIMOTE_APP_ID" default="-" />
 	<preference name="ESTIMOTE_APP_TOKEN" default="-" />
 	<preference name="LOCATION_WHEN_IN_USE_DESCRIPTION" default="This app would like to scan for beacons while it is in use." />
@@ -41,6 +38,11 @@
 	<platform name="ios">
 		<header-file src="src/ios/CDVEstimoteSDK-Bridging-Header.h"/>
 		<source-file src="src/ios/CDVEstimoteSDK.swift" />
+		<config-file target="config.xml" parent="/widget">
+			<feature name="CDVEstimoteSDK">
+				<param name="ios-package" value="CDVEstimoteSDK" />
+			</feature>
+		</config-file>
 		<config-file target="*-Info.plist" parent="CDVEstimoteSDK">
 			<dict>
 				<key>AppID</key>
@@ -55,7 +57,9 @@
         <config-file target="*-Info.plist" parent="NSLocationWhenInUseUsageDescription">
             <string>$LOCATION_WHEN_IN_USE_DESCRIPTION</string>
         </config-file>
-		<pod name="EstimoteSDK" version="4.16.0" />
+		<framework src="EstimoteSDK" type="podspec" spec="~> 4.16.0" />
+		<dependency id="cordova-plugin-add-swift-support" version="1.6.2"/>
+		<hook type="after_plugin_install" src="scripts/postinstall.sh" />
 	</platform>
 
 </plugin>
