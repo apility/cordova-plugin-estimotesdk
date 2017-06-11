@@ -1,6 +1,6 @@
 # Contributing
 
-InstantLink is intended to be a public project that anyone can participate in. If you would like to add support for new functions, fix a bug, do performance optimization etc. please read this guide.
+cordova-plugin-estimotesdk is intended to be a public project that anyone can participate in. If you would like to add support for new functions, fix a bug, do performance optimization etc. please read this guide.
 
 Fork, then clone the repo:
 
