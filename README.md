@@ -17,6 +17,8 @@ sudo gem install cocoapods
 pod setup
 ```
 
+Also remember to compile from the .xcworkspace file, and not the .xcodeproject file. Otherwise, Xcode won't be able to compile the dependencies (EstimoteSDK.framework) correctly.
+
 For Android, we use jcenter to pull the dependencies, this is already supported through Android Studio and Gradle.
 
 ## Setup
